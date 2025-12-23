@@ -143,8 +143,8 @@ dist/
 Consumers can import:
 
 ```typescript
-import { Button, Card } from '@indieui/components';
-import '@indieui/components/styles.css';
+import { Button, Card } from '@agenticindiedev/ui';
+import '@agenticindiedev/ui/styles.css';
 ```
 
 ---

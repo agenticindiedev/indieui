@@ -5,7 +5,7 @@ A modern React component library built with TypeScript, Tailwind CSS v4, and cla
 ## Installation
 
 ```bash
-bun add @indieui/components
+bun add @agenticindiedev/ui
 ```
 
 ## Setup
@@ -48,8 +48,8 @@ This launches Storybook at `http://localhost:6006` where you can preview and dev
 ## Usage
 
 ```tsx
-import { Button, Card, CardHeader, CardContent } from '@indieui/components';
-import '@indieui/components/styles.css';
+import { Button, Card, CardHeader, CardContent } from '@agenticindiedev/ui';
+import '@agenticindiedev/ui/styles.css';
 
 function App() {
   return (

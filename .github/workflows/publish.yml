@@ -12,6 +12,9 @@ jobs:
     # Only run if build succeeded and was triggered by push (not PR)
     if: ${{ github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push' }}
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
 
     steps:
       - name: Checkout code
@@ -60,22 +63,17 @@ jobs:
           rm dist.zip
           ls -la dist/
 
-      - name: Configure npm authentication
-        run: |
-          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
-          cat .npmrc
-
       - name: Publish to npm
-        run: npm publish --access public
+        run: npm publish --access public --provenance
 
       - name: Create Release Summary
         run: |
           VERSION=$(node -p "require('./package.json').version")
           echo "### 📦 Published to npm" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "**@indieui/components@${VERSION}**" >> $GITHUB_STEP_SUMMARY
+          echo "**@agenticindiedev/ui@${VERSION}**" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "Install with:" >> $GITHUB_STEP_SUMMARY
           echo "\`\`\`bash" >> $GITHUB_STEP_SUMMARY
-          echo "bun add @indieui/components" >> $GITHUB_STEP_SUMMARY
+          echo "bun add @agenticindiedev/ui" >> $GITHUB_STEP_SUMMARY
           echo "\`\`\`" >> $GITHUB_STEP_SUMMARY

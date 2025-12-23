@@ -64,7 +64,7 @@
   "license": "MIT",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
-  "name": "@indieui/components",
+  "name": "@agenticindiedev/ui",
   "packageManager": "bun@1.1.14",
   "peerDependencies": {
     "react": "18.0.0 || ^19.0.0",
@@ -101,5 +101,5 @@
   ],
   "type": "module",
   "types": "./dist/index.d.ts",
-  "version": "0.1.0"
+  "version": "0.1.1"
 }
