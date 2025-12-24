@@ -114,7 +114,7 @@
     "pre:install": "bun update --latest --recursive && bun install",
     "prepare": "bun run build",
     "prepare:deploy": "bun run format:fix && bun run lint:fix && bun run build",
-    "prepublishOnly": "test -d dist || bun run build",
+    "prepublishOnly": "node -e \"const fs = require('fs'); if (!fs.existsSync('dist')) { console.error('ERROR: dist directory not found. Run \\\"bun run build\\\" first.'); process.exit(1); }\"",
     "storybook": "storybook dev -p 6006",
     "test": "bun test",
     "typecheck": "tsc --noEmit"
