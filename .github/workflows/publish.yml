@@ -59,6 +59,15 @@ jobs:
           rm dist.zip
           ls -la dist/
 
+      - name: Verify build output
+        run: |
+          if [ ! -f "dist/index.js" ] || [ ! -f "dist/index.cjs" ] || [ ! -f "dist/index.d.ts" ]; then
+            echo "ERROR: dist directory is missing required files"
+            ls -la dist/ 2>/dev/null || echo "dist/ directory not found"
+            exit 1
+          fi
+          echo "✅ Build output verified"
+
       - name: Publish to NPM registry
         run: npm publish --access public --provenance
 
