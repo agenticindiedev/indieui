@@ -1,4 +1,4 @@
-import { render, act, waitFor } from '@testing-library/react';
+import { act, render, waitFor } from '@testing-library/react';
 import { describe, expect, it, vi } from 'bun:test';
 import { Select } from './Select';
 
@@ -41,30 +41,38 @@ describe('Select', () => {
       <Select options={defaultOptions} onValueChange={onValueChange} />
     );
     const trigger = getByRole('combobox');
-    
+
     // Open the select
     await act(async () => {
       trigger.click();
     });
-    
+
     // Wait for the portal to render options
-    await waitFor(async () => {
-      const options = document.querySelectorAll('[role="option"]');
-      expect(options.length).toBeGreaterThan(0);
-    }, { timeout: 1000 });
-    
+    await waitFor(
+      async () => {
+        const options = document.querySelectorAll('[role="option"]');
+        expect(options.length).toBeGreaterThan(0);
+      },
+      { timeout: 1000 }
+    );
+
     // Click the first option
     await act(async () => {
-      const firstOption = document.querySelector('[role="option"]') as HTMLElement;
+      const firstOption = document.querySelector(
+        '[role="option"]'
+      ) as HTMLElement;
       if (firstOption) {
         firstOption.click();
       }
     });
-    
+
     // Verify onValueChange was called with the correct value
-    await waitFor(() => {
-      expect(onValueChange).toHaveBeenCalledWith('option1');
-    }, { timeout: 1000 });
+    await waitFor(
+      () => {
+        expect(onValueChange).toHaveBeenCalledWith('option1');
+      },
+      { timeout: 1000 }
+    );
   });
 
   it('is disabled when disabled prop is true', () => {
@@ -126,7 +134,7 @@ describe('Select', () => {
     );
     const trigger = getByRole('combobox');
     expect(trigger).toBeTruthy();
-    
+
     // Update the value prop
     rerender(<Select options={defaultOptions} value="option2" />);
     expect(trigger).toBeTruthy();
