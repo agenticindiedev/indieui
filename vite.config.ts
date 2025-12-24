@@ -24,7 +24,19 @@ export default defineConfig({
       fileName: (format) => `index.${format === 'es' ? 'js' : 'cjs'}`,
     },
     rollupOptions: {
-      external: ['react', 'react-dom', 'react/jsx-runtime'],
+      external: (id) => {
+        // Externalize React and React-DOM (peer dependencies)
+        if (
+          id === 'react' ||
+          id === 'react-dom' ||
+          id === 'react/jsx-runtime'
+        ) {
+          return true;
+        }
+
+        // Bundle everything else (Radix UI, TanStack, etc.)
+        return false;
+      },
       output: {
         globals: {
           react: 'React',
