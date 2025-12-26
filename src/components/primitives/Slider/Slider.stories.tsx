@@ -11,7 +11,13 @@ const meta: Meta<typeof Slider> = {
   tags: ['autodocs'],
   argTypes: {
     defaultValue: {
-      control: { type: 'range', min: 0, max: 100, step: 1 },
+      table: { disable: true },
+    },
+    value: {
+      table: { disable: true },
+    },
+    onValueChange: {
+      table: { disable: true },
     },
     max: {
       control: { type: 'number' },
@@ -96,4 +102,3 @@ export const Disabled: Story = {
     </div>
   ),
 };
-

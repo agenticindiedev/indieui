@@ -42,21 +42,21 @@ This launches the demo gallery at `http://localhost:3000` showcasing all compone
 
 ## Scripts
 
-| Command                  | Description                            |
-| ------------------------ | -------------------------------------- |
-| `bun dev`                | Start Storybook development server     |
-| `bun run build`          | Build the library for production       |
-| `bun run build-storybook`| Build Storybook for deployment         |
-| `bun run build:lib`      | Build only the JS/TS bundle            |
-| `bun run build:css`      | Build only the CSS bundle              |
-| `bun run pre:install`    | Update dependencies and rebuild        |
-| `bun run prepare:deploy` | Format, lint, and build for deployment |
-| `bun run format:check`   | Check code formatting                  |
-| `bun run format:fix`     | Fix code formatting                    |
-| `bun run lint:check`     | Check for linting errors               |
-| `bun run lint:fix`       | Fix linting errors                     |
-| `bun test`               | Run tests                              |
-| `bun run typecheck`      | Run TypeScript type checking           |
+| Command                   | Description                            |
+| ------------------------- | -------------------------------------- |
+| `bun dev`                 | Start Storybook development server     |
+| `bun run build`           | Build the library for production       |
+| `bun run build-storybook` | Build Storybook for deployment         |
+| `bun run build:lib`       | Build only the JS/TS bundle            |
+| `bun run build:css`       | Build only the CSS bundle              |
+| `bun run pre:install`     | Update dependencies and rebuild        |
+| `bun run prepare:deploy`  | Format, lint, and build for deployment |
+| `bun run format:check`    | Check code formatting                  |
+| `bun run format:fix`      | Fix code formatting                    |
+| `bun run lint:check`      | Check for linting errors               |
+| `bun run lint:fix`        | Fix linting errors                     |
+| `bun test`                | Run tests                              |
+| `bun run typecheck`       | Run TypeScript type checking           |
 
 ## Usage
 
@@ -263,7 +263,7 @@ src/
 │   └── patterns/         # Complex patterns
 │       └── DataTable/
 ├── styles/
-│   └── globals.css       # Tailwind CSS entry point
+│   └── globals.scss      # Tailwind CSS entry point
 ├── utils/
 │   └── cn.ts             # Class name utility
 └── index.ts              # Public exports
