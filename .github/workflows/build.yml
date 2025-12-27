@@ -87,11 +87,25 @@ jobs:
       - name: Check build output
         run: |
           echo "Checking build output..."
-          if [ -f "dist/index.js" ] && [ -f "dist/index.cjs" ] && [ -f "dist/index.d.ts" ]; then
+          if [ -f "dist/index.js" ] && [ -f "dist/index.cjs" ] && [ -f "dist/index.d.ts" ] && \
+             [ -f "dist/styles.css" ] && \
+             [ -f "dist/tailwind.preset.js" ] && \
+             [ -f "dist/themes/light.scss" ] && [ -f "dist/themes/dark.scss" ]; then
             echo "✅ All build outputs exist"
             ls -la dist/
+            echo ""
+            echo "Theme files:"
+            ls -la dist/themes/
           else
             echo "❌ Build outputs missing"
+            echo "Checking for:"
+            echo "  - dist/index.js: $([ -f "dist/index.js" ] && echo '✅' || echo '❌')"
+            echo "  - dist/index.cjs: $([ -f "dist/index.cjs" ] && echo '✅' || echo '❌')"
+            echo "  - dist/index.d.ts: $([ -f "dist/index.d.ts" ] && echo '✅' || echo '❌')"
+            echo "  - dist/styles.css: $([ -f "dist/styles.css" ] && echo '✅' || echo '❌')"
+            echo "  - dist/tailwind.preset.js: $([ -f "dist/tailwind.preset.js" ] && echo '✅' || echo '❌')"
+            echo "  - dist/themes/light.scss: $([ -f "dist/themes/light.scss" ] && echo '✅' || echo '❌')"
+            echo "  - dist/themes/dark.scss: $([ -f "dist/themes/dark.scss" ] && echo '✅' || echo '❌')"
             ls -la dist/ 2>/dev/null || echo "dist/ directory not found"
             exit 1
           fi

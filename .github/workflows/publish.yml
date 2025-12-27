@@ -61,12 +61,25 @@ jobs:
 
       - name: Verify build output
         run: |
-          if [ ! -f "dist/index.js" ] || [ ! -f "dist/index.cjs" ] || [ ! -f "dist/index.d.ts" ]; then
+          if [ ! -f "dist/index.js" ] || [ ! -f "dist/index.cjs" ] || [ ! -f "dist/index.d.ts" ] || \
+             [ ! -f "dist/styles.css" ] || \
+             [ ! -f "dist/tailwind.preset.js" ] || \
+             [ ! -f "dist/themes/light.scss" ] || [ ! -f "dist/themes/dark.scss" ]; then
             echo "ERROR: dist directory is missing required files"
+            echo "Required files:"
+            echo "  - dist/index.js"
+            echo "  - dist/index.cjs"
+            echo "  - dist/index.d.ts"
+            echo "  - dist/styles.css"
+            echo "  - dist/tailwind.preset.js"
+            echo "  - dist/themes/light.scss"
+            echo "  - dist/themes/dark.scss"
             ls -la dist/ 2>/dev/null || echo "dist/ directory not found"
             exit 1
           fi
           echo "✅ Build output verified"
+          echo "Theme files:"
+          ls -la dist/themes/
 
       - name: Configure npm to ignore scripts
         run: echo "ignore-scripts=true" >> .npmrc
