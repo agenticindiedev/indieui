@@ -74,13 +74,13 @@
   },
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
     },
     "./styles.css": "./dist/styles.css",
-    "./themes/*": "./dist/themes/*.scss",
-    "./tailwind.preset": "./dist/tailwind.preset.js"
+    "./tailwind.preset": "./dist/tailwind.preset.js",
+    "./themes/*": "./dist/themes/*.scss"
   },
   "files": [
     "dist"
@@ -123,8 +123,8 @@
     "build-storybook": "storybook build",
     "build:css": "bunx postcss ./src/styles/globals.scss -o ./dist/styles.css --verbose",
     "build:lib": "./scripts/build-lib.sh",
-    "build:themes": "node scripts/build-themes.mjs",
     "build:preset": "node scripts/build-preset.mjs",
+    "build:themes": "node scripts/build-themes.mjs",
     "deploy:storybook": "bun run build-storybook",
     "dev": "storybook dev -p 6006",
     "format:check": "prettier --check .",
@@ -146,5 +146,5 @@
   ],
   "type": "module",
   "types": "./dist/index.d.ts",
-  "version": "0.3.0"
+  "version": "0.3.1"
 }
